@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+        <header>
+        <h2 class="titulo">Nossa História</h2>
+    </header>
+    <main>
+
+    
+        <section class="timeline">
+            <p class="subtitulo">Alguns momentos que fazem parte de nós.</p>
+
+            <div class="linha">
+
+                <div class="evento">
+                    <div class="bolinha"></div>
+
+                    <div class="conteudo">
+                        <span class="data"></span>
+                        <h3>Na frente daqui foi onde a gente deu o primeiro beijo</h3>
+
+                        <img src="fotos/images.jpg" alt="primeiro kiss">
+
+                        <p>
+                            Desde antes desse dia eu sabia q eu ia escolher você pra passar o resto da minha vida.
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="evento">
+                    <div class="bolinha"></div>
+
+                    <div class="conteudo">
+                        <h3>Lembra dessa saidinha???</h3>
+
+                        <img src="fotos/burger.jpeg" alt="Nosso primeiro encontro">
+
+                        <p>
+                            Cada dia que passa eu vejo o quão apaixonado e sortudo eu sou por ter você do meu lado a tanto tempo.
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="evento">
+                    <div class="bolinha"></div>
+
+                    <div class="conteudo">
+                        <h3>Lembra de quando a gente só se via nos jogos?????</h3>
+
+                        <img src="fotos/bigode.jpeg" alt="Momento especial">
+
+                        <p>
+                            Eu lembro que eu esperava a semana inteira para gravar videozinhos com você no tiktok, era meu momento favorito da semana.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="evento">
+                    <div class="bolinha"></div>
+
+                    <div class="conteudo">
+                        <h3>Nossa primeira festinha</h3>
+
+                        <img src="fotos/festa.jpeg" alt="Momento especial">
+
+                        <p>
+                            Nossa bateria social acabou daí a gente ficou de lovelove sentado na tampa da foça da wizard KKKKKKKKKKK, eu amei mto esse momento com você.
+                        </p>
+                    </div>
+                </div>
+                <div class="card">
+                <a href="teste3.html" class="p">Próximooooooooooo</a>
+                </div>
+            </div>
+
+        </section>
+</main>
+</body>
+<script>
+    const eventos = document.querySelectorAll(".evento");
+
+const observador = new IntersectionObserver(
+    (entradas) => {
+        entradas.forEach((entrada) => {
+            if (entrada.isIntersecting) {
+                entrada.target.classList.add("visivel");
+            }
+        });
+    },
+    {
+        threshold: 0.2
+    }
+);
+
+eventos.forEach((evento) => {
+    observador.observe(evento);
+});
+</script>
+</html>

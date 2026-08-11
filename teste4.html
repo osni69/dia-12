@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h2 class="titulo">Nossa História</h2>
+    </header>
+
+    <main>
+<section class="quiz" id="quiz">
+
+    <div class="quiz-cabecalho">
+        <span class="quiz-icone">❤️</span>
+
+        <h2>Serase vose acerta tudo??</h2>
+    </div>
+
+
+    <div class="quiz-progresso">
+
+        <span id="perguntaNumero">
+            Pergunta 1 de 5
+        </span>
+
+        <div class="barra">
+            <div class="barra-progresso" id="barraProgresso"></div>
+        </div>
+
+    </div>
+
+
+    <div class="quiz-card">
+
+        <div class="numero-pergunta">
+            <span id="numeroPergunta">01</span>
+        </div>
+
+
+        <h3 id="pergunta">
+            Onde foi nosso primeiro encontro e o que a gente fez?
+        </h3>
+
+
+        <div id="opcoes" class="opcoes">
+
+            <button onclick="responder(0)">
+                Shopping e fomos jantar
+            </button>
+
+            <button onclick="responder(1)">
+                Cinema e assistimos o filme do Homem-Aranha
+            </button>
+
+            <button onclick="responder(2)">
+                Parque e ficamos conversando
+            </button>
+
+            <button onclick="responder(3)">
+                Cinema e assistimos um filme de terror
+            </button>
+
+        </div>
+
+
+        <p id="resultado"></p>
+
+    </div>
+    <div class="card proximo-card" id="proximoCard">
+
+    <a href="carta.html" class="p2">
+        Próximo
+    </a>
+
+</div>
+</section>
+    </main>
+</body>
+<script>
+const perguntas = [
+    {
+        pergunta: "Onde foi nosso primeiro encontro e o que a gente fez?",
+        opcoes: [
+            "Shopping e fomos jantar",
+            "Cinema e assistimos o filme do Homem-Aranha",
+            "Parque e ficamos conversando",
+            "Cinema e assistimos um filme de terror"
+        ],
+        resposta: 1
+    },
+
+    {
+        pergunta: "Qual dia te pedi em namoro pros seus pais?",
+        opcoes: [
+            "22/05/2025",
+            "22/06/2025",
+            "25/06/2025",
+            "22/07/2025"
+        ],
+        resposta: 1
+    },
+
+    {
+        pergunta: "Quais famosos a gente encontrou no shopping?",
+        opcoes: [
+            "Orochinho e Doazin",
+            "Orochinho e Casimiro",
+            "Doazin e Cellbit",
+            "Orochinho e Alanzoka"
+        ],
+        resposta: 0
+    },
+
+    {
+        pergunta: "Quem foi o pilar do nosso relacionamento?",
+        dica: "Dica: ele pisca muito",
+        opcoes: [
+            "Doazin",
+            "Homem-Aranha",
+            "Orochinho",
+            "Michael Scott"
+        ],
+        resposta: 2
+    },
+
+    {
+        pergunta: "Qual série você me fez ficar viciado?",
+        opcoes: [
+            "Friends",
+            "The Office",
+            "Breaking Bad",
+            "The Boys"
+        ],
+        resposta: 1
+    }
+];
+
+
+let perguntaAtual = 0;
+let pontos = 0;
+
+
+/* =========================
+   CARREGAR PERGUNTA
+========================= */
+
+function carregarPergunta() {
+
+    const pergunta = perguntas[perguntaAtual];
+
+    /* Número: 1 de 5 */
+    document.getElementById("perguntaNumero").textContent =
+        `Pergunta ${perguntaAtual + 1} de ${perguntas.length}`;
+
+
+    /* Número dentro do círculo */
+    document.getElementById("numeroPergunta").textContent =
+        String(perguntaAtual + 1).padStart(2, "0");
+
+
+    /* Pergunta */
+    document.getElementById("pergunta").textContent =
+        pergunta.pergunta;
+
+
+    /* Barra de progresso */
+
+    const progresso =
+        ((perguntaAtual + 1) / perguntas.length) * 100;
+
+    document.getElementById("barraProgresso").style.width =
+        `${progresso}%`;
+
+
+    /* Opções */
+
+    const opcoes =
+        document.getElementById("opcoes");
+
+    opcoes.innerHTML = "";
+
+
+    pergunta.opcoes.forEach((opcao, index) => {
+
+        const botao = document.createElement("button");
+
+        botao.textContent = opcao;
+
+        botao.onclick = () => responder(index);
+
+        opcoes.appendChild(botao);
+
+    });
+
+
+    /* Limpa resultado */
+
+    document.getElementById("resultado").textContent = "";
+}
+
+
+/* =========================
+   RESPONDER
+========================= */
+
+function responder(resposta) {
+
+    const pergunta = perguntas[perguntaAtual];
+
+    const botoes =
+        document.querySelectorAll(".opcoes button");
+
+    const resultado =
+        document.getElementById("resultado");
+
+
+    /* Impede clicar novamente */
+
+    botoes.forEach(botao => {
+        botao.disabled = true;
+    });
+
+
+    /* ACERTO */
+
+    if (resposta === pergunta.resposta) {
+
+        pontos++;
+
+        botoes[resposta].style.background =
+            "#4CAF50";
+
+        botoes[resposta].style.borderColor =
+            "#4CAF50";
+
+        resultado.textContent =
+            "Acertou!";
+
+        resultado.style.color =
+            "#4CAF50";
+
+    }
+
+
+    /* ERRO */
+
+    else {
+
+        botoes[resposta].style.background =
+            "#d9534f";
+
+        botoes[resposta].style.borderColor =
+            "#d9534f";
+
+
+        /* Mostra qual era a certa */
+
+        botoes[pergunta.resposta].style.background =
+            "#4CAF50";
+
+        botoes[pergunta.resposta].style.borderColor =
+            "#4CAF50";
+
+
+        resultado.textContent =
+            "Errou!";
+
+        resultado.style.color =
+            "#d9534f";
+    }
+
+
+    /* Espera e passa para próxima */
+
+    setTimeout(() => {
+
+        perguntaAtual++;
+
+
+        if (perguntaAtual < perguntas.length) {
+
+            carregarPergunta();
+
+        } else {
+
+            mostrarResultado();
+
+        }
+
+    }, 1200);
+}
+
+
+/* =========================
+   RESULTADO FINAL
+========================= */
+
+function mostrarResultado() {
+
+    document.getElementById("perguntaNumero").textContent =
+        "Quiz concluído";
+
+
+    document.getElementById("numeroPergunta").textContent =
+        "✓";
+
+
+    /* Barra fica cheia */
+
+    document.getElementById("barraProgresso").style.width =
+        "100%";
+
+
+    document.getElementById("pergunta").textContent =
+        `${pontos} de ${perguntas.length}`;
+
+
+    document.getElementById("opcoes").innerHTML = "";
+
+
+    let mensagem;
+
+
+    if (pontos === 5) {
+
+        mensagem =
+            "YUPIIIIIIIIIIIIIIII QUEM ACERTOU TUDO FALA EUUUUUUUU, EU TE AMO MUITO MEU AMOR!!!!!";
+
+    } else if (pontos >= 3) {
+
+        mensagem =
+            "AFFFFF NAO ACERTOU TUDO COMO ASSIM!!";
+
+    } else {
+
+        mensagem =
+            "bizarro.";
+
+    }
+
+
+    document.getElementById("resultado").textContent =
+        mensagem;
+}
+
+
+/* =========================
+   INICIAR
+========================= */
+
+carregarPergunta();
+function mostrarResultado() {
+
+    document.getElementById("perguntaNumero").textContent =
+        "Quiz concluído";
+
+    document.getElementById("numeroPergunta").textContent =
+        "✓";
+
+    document.getElementById("barraProgresso").style.width =
+        "100%";
+
+    document.getElementById("pergunta").textContent =
+        `${pontos} de ${perguntas.length}`;
+
+    document.getElementById("opcoes").innerHTML = "";
+
+    let mensagem;
+
+    if (pontos === 5) {
+
+        mensagem =
+            "Você acertou tudo. Parece que nossa história está bem guardada na sua memória.";
+
+    } else if (pontos >= 3) {
+
+        mensagem =
+            "Você conhece muito bem a nossa história.";
+
+    } else {
+
+        mensagem =
+            "Acho que precisamos criar mais memórias juntos.";
+
+    }
+
+    document.getElementById("resultado").textContent =
+        mensagem;
+
+
+    /* MOSTRA O BOTÃO PRÓXIMO */
+
+    const proximo =
+        document.getElementById("proximoCard");
+
+    proximo.classList.add("mostrar");
+}
+</script>
+</html>

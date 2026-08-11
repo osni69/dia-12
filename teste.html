@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h2 class="titulo">Nossa História</h2>
+    </header>
+    <main>
+        <div class="contador">
+            <h2>Estamos juntos há:</h2>
+
+            <div class="tempo">
+                <div>
+                    <span id="anos">0</span>
+                    <small>anos</small>
+                </div>
+
+                <div>
+                    <span id="meses">0</span>
+                    <small>meses</small>
+                </div>
+
+                <div>
+                    <span id="dias">0</span>
+                    <small>dias</small>
+                </div>
+            </div>
+
+            <div class="relogio">
+                <span id="horas">00</span> :
+                <span id="minutos">00</span> :
+                <span id="segundos">00</span>
+            </div>
+            <div class="card">
+                <a href="teste2.html" class="p">E nesse tempo nós já...</a>
+            </div>
+        </div>
+    </main>
+</body>
+
+<script>
+    const dataInicio = new Date("2025-06-22T00:00:00");
+
+function atualizarContador() {
+    const agora = new Date();
+
+    let anos = agora.getFullYear() - dataInicio.getFullYear();
+    let meses = agora.getMonth() - dataInicio.getMonth();
+    let dias = agora.getDate() - dataInicio.getDate();
+
+    if (dias < 0) {
+        meses--;
+        const ultimoDiaMesAnterior = new Date(
+            agora.getFullYear(),
+            agora.getMonth(),
+            0
+        ).getDate();
+
+        dias += ultimoDiaMesAnterior;
+    }
+
+    if (meses < 0) {
+        anos--;
+        meses += 12;
+    }
+
+    document.getElementById("anos").textContent = anos;
+    document.getElementById("meses").textContent = meses;
+    document.getElementById("dias").textContent = dias;
+
+    const diferenca = agora - dataInicio;
+
+    const horas = Math.floor(
+        (diferenca / (1000 * 60 * 60)) % 24
+    );
+
+    const minutos = Math.floor(
+        (diferenca / (1000 * 60)) % 60
+    );
+
+    const segundos = Math.floor(
+        (diferenca / 1000) % 60
+    );
+
+    document.getElementById("horas").textContent =
+        String(horas).padStart(2, "0");
+
+    document.getElementById("minutos").textContent =
+        String(minutos).padStart(2, "0");
+
+    document.getElementById("segundos").textContent =
+        String(segundos).padStart(2, "0");
+}
+
+setInterval(atualizarContador, 1000);
+
+atualizarContador();
+</script>
+</html>

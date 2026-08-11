@@ -1,0 +1,883 @@
+*{
+    margin: 0;
+}
+body {
+    display: grid;
+
+    grid-template-areas:
+        "cabeca"
+        "corpo";
+
+    grid-template-rows: 100px auto;
+    grid-template-columns: 1fr;
+
+    margin: 0;
+    width: 100%;
+    min-height: 100vh;
+
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode',
+                 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+    background-color: rgb(255, 240, 254);
+}
+
+header{
+    grid-area: cabeca;
+    background-color: whitesmoke;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.319);
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+main{
+    grid-area: corpo;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.titulo{
+    font-family: fantasy;
+    font-size: 30px;
+}
+
+.comeco{
+    padding: 10px;
+    background-color: rgb(252, 154, 211);
+    text-decoration: none;
+    font-weight: bolder;
+    color: black;
+    border-radius: 9px;
+    box-shadow: 0 2px 15px rgba(255, 0, 0, 0.319);
+    transition: 0.5s ease;
+    border: none;
+}
+
+.comeco:hover{
+    transform: scale(1.1);
+}
+
+.contador {
+    width: 90%;
+    max-width: 200px;
+    margin: 40px auto;
+    padding: 25px 15px;
+    text-align: center;
+    background: #171717;
+    color: white;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.contador h2 {
+    color: #ff8fa3;
+    margin-bottom: 5px;
+}
+
+.contador p {
+    color: #ccc;
+}
+
+.tempo {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 25px 0;
+}
+
+.tempo div {
+    min-width: 40px;
+    padding: 12px 5px;
+
+    background: #252525;
+    border-radius: 15px;
+}
+
+.tempo span {
+    display: block;
+    font-size: 28px;
+    font-weight: bold;
+    color: #ff8fa3;
+}
+
+.tempo small {
+    color: #aaa;
+}
+
+.relogio {
+    font-size: 22px;
+    letter-spacing: 2px;
+    color: #fff;
+}
+
+.card{
+    padding: 10px;
+    font-weight: bolder;
+    border-radius: 9px;
+    background-color: #ff8fa3;
+    margin: 10px;
+    transition: 0.5s ease;
+    text-align: center;
+    width: auto;
+}
+.p{
+    color: #252525;
+    text-decoration: none;
+}
+
+.card:hover{
+    transform: scale(1.05);
+}
+
+.timeline {
+    width: 90%;
+    max-width: 500px;
+    margin: 50px auto;
+    color: white;
+}
+
+.timeline h2 {
+    text-align: center;
+    font-size: 30px;
+    color: #ff8fa3;
+    margin-bottom: 5px;
+}
+
+.subtitulo {
+    text-align: center;
+    color: #aaa;
+    margin-bottom: 40px;
+}
+
+
+/* Linha vertical */
+
+.linha {
+    position: relative;
+    padding-left: 30px;
+}
+
+.linha::before {
+    content: "";
+    position: absolute;
+
+    left: 8px;
+    top: 0;
+    bottom: 0;
+
+    width: 2px;
+
+    background: #ff8fa3;
+}
+
+
+/* Evento */
+
+.evento {
+    position: relative;
+    margin-bottom: 45px;
+}
+
+
+/* Bolinha */
+
+.bolinha {
+    position: absolute;
+
+    left: -29px;
+    top: 5px;
+
+    width: 16px;
+    height: 16px;
+
+    background: #ff8fa3;
+    border: 4px solid #171717;
+
+    border-radius: 50%;
+
+    box-shadow: 0 0 12px #ff8fa3;
+}
+
+
+/* Conteúdo */
+
+.conteudo {
+    background: #1d1d1d;
+
+    padding: 18px;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.data {
+    font-size: 12px;
+    color: #ff8fa3;
+    font-weight: bold;
+}
+
+.conteudo h3 {
+    margin: 8px 0 15px;
+    font-size: 21px;
+}
+
+.conteudo p {
+    color: #ccc;
+    line-height: 1.6;
+}
+
+
+/* Fotos */
+
+.conteudo img {
+    width: 100%;
+    height: 220px;
+
+    object-fit: cover;
+
+    border-radius: 14px;
+
+    margin-bottom: 10px;
+}
+.evento {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.evento.visivel {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.amor {
+    width: 90%;
+    max-width: 450px;
+    margin: 50px auto;
+    text-align: center;
+    color: white;
+}
+
+.amor h2 {
+    color: #ff8fa3;
+    font-size: 28px;
+}
+
+.subtitulo {
+    color: #aaa;
+    margin-bottom: 30px;
+}
+
+.cartoes {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+/* CARTÃO */
+
+.cartao {
+    width: 100%;
+    height: 100px;
+
+    position: relative;
+    perspective: 1000px;
+
+    cursor: pointer;
+
+    transition: height 0.7s ease;
+}
+
+
+/* FRENTE E VERSO */
+
+.frente,
+.verso {
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 20px;
+
+    backface-visibility: hidden;
+
+    transition: transform 0.7s ease;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+
+/* FRENTE */
+
+.frente {
+    background: #252525;
+}
+
+.frente span {
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+
+.frente h3 {
+    color: #ff8fa3;
+}
+
+
+/* VERSO */
+
+.verso {
+    background: #ff8fa3;
+
+    color: white;
+
+    padding: 20px;
+
+    box-sizing: border-box;
+
+    transform: rotateY(180deg);
+}
+
+.verso h3 {
+    margin: 0 0 10px;
+}
+
+.verso p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+
+/* QUANDO VIRAR */
+
+.cartao.virado .frente {
+    transform: rotateY(180deg);
+}
+
+.cartao.virado .verso {
+    transform: rotateY(360deg);
+}
+
+/* =========================
+   QUIZ
+========================= */
+
+.quiz {
+    width: 90%;
+    max-width: 450px;
+
+    margin: 70px auto;
+
+    color: white;
+
+    text-align: center;
+}
+
+
+/* CABEÇALHO */
+
+.quiz-cabecalho {
+    margin-bottom: 30px;
+}
+
+.quiz-icone {
+    display: block;
+
+    font-size: 35px;
+
+    margin-bottom: 10px;
+
+    animation: pulsar 2s infinite;
+}
+
+.quiz h2 {
+    margin: 0;
+
+    color: #ff8fa3;
+
+    font-size: 27px;
+
+    line-height: 1.2;
+}
+
+.quiz-cabecalho p {
+    color: #999;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+    margin-top: 12px;
+}
+
+
+/* =========================
+   PROGRESSO
+========================= */
+
+.quiz-progresso {
+    margin-bottom: 20px;
+}
+
+#perguntaNumero {
+    display: block;
+
+    color: #aaa;
+
+    font-size: 13px;
+
+    margin-bottom: 8px;
+}
+
+.barra {
+    width: 100%;
+
+    height: 5px;
+
+    background: #292929;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+}
+
+.barra-progresso {
+    width: 20%;
+
+    height: 100%;
+
+    background: #ff8fa3;
+
+    border-radius: 10px;
+
+    transition: width 0.5s ease;
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.quiz-card {
+    position: relative;
+
+    padding: 30px 20px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #222222,
+            #181818
+        );
+
+    border: 1px solid #2d2d2d;
+
+    border-radius: 25px;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.35);
+
+    overflow: hidden;
+}
+
+
+/* brilho discreto */
+
+.quiz-card::before {
+    content: "";
+
+    position: absolute;
+
+    width: 150px;
+    height: 150px;
+
+    top: -80px;
+    right: -80px;
+
+    background: #ff8fa3;
+
+    opacity: 0.08;
+
+    border-radius: 50%;
+
+    filter: blur(10px);
+}
+
+
+/* NÚMERO */
+
+.numero-pergunta {
+    width: 45px;
+    height: 45px;
+
+    margin: 0 auto 20px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #ff8fa3;
+
+    color: white;
+
+    font-weight: bold;
+
+    box-shadow:
+        0 5px 20px rgba(255, 143, 163, 0.25);
+}
+
+#numeroPergunta {
+    font-size: 15px;
+}
+
+
+/* PERGUNTA */
+
+.quiz-card h3 {
+    position: relative;
+
+    margin: 0 auto 25px;
+
+    max-width: 350px;
+
+    font-size: 20px;
+
+    line-height: 1.4;
+
+    font-weight: 600;
+}
+
+
+/* =========================
+   OPÇÕES
+========================= */
+
+.opcoes {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+.opcoes button {
+    width: 100%;
+
+    min-height: 55px;
+
+    padding: 13px 16px;
+
+    border: 1px solid #353535;
+
+    border-radius: 15px;
+
+    background: #252525;
+
+    color: #eee;
+
+    font-size: 15px;
+
+    line-height: 1.3;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        background 0.25s ease,
+        border 0.25s ease;
+}
+
+
+/* toque */
+
+.opcoes button:active {
+    transform: scale(0.96);
+}
+
+
+/* hover no computador */
+
+@media (hover: hover) {
+
+    .opcoes button:hover {
+        background: #303030;
+
+        border-color: #ff8fa3;
+
+        transform: translateY(-2px);
+    }
+
+}
+
+
+/* botões desativados */
+
+.opcoes button:disabled {
+    cursor: default;
+
+    opacity: 1;
+}
+
+
+/* =========================
+   RESULTADO
+========================= */
+
+#resultado {
+    min-height: 24px;
+
+    margin: 20px 0 0;
+
+    font-size: 15px;
+
+    font-weight: bold;
+
+    line-height: 1.5;
+
+    transition: opacity 0.3s ease;
+}
+
+
+/* =========================
+   ANIMAÇÃO
+========================= */
+
+@keyframes pulsar {
+
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.12);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+
+}
+
+
+/* =========================
+   MOBILE PEQUENO
+========================= */
+
+@media (max-width: 360px) {
+
+    .quiz {
+        width: 92%;
+    }
+
+    .quiz h2 {
+        font-size: 24px;
+    }
+
+    .quiz-card {
+        padding: 25px 15px;
+    }
+
+    .opcoes button {
+        font-size: 14px;
+    }
+
+}
+
+/* =========================
+   BOTÃO PRÓXIMO
+========================= */
+
+.proximo-card {
+    display: none;
+
+    width: 90%;
+    max-width: 400px;
+
+    margin: 30px auto 60px;
+
+    text-align: center;
+
+    opacity: 0;
+    transform: translateY(25px) scale(0.95);
+
+    transition:
+        opacity 0.7s ease,
+        transform 0.7s ease;
+}
+
+
+/* Quando terminar o quiz */
+
+.proximo-card.mostrar {
+    display: block;
+
+    animation: aparecerBotao 0.8s ease forwards;
+}
+
+
+/* BOTÃO */
+
+.proximo-card .p2 {
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 180px;
+
+    padding: 16px 28px;
+
+    border-radius: 50px;
+
+    background: linear-gradient(
+        135deg,
+        #ff8fa3,
+        #ff6f91
+    );
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.3px;
+
+    box-shadow:
+        0 8px 25px rgba(255, 111, 145, 0.3);
+
+    overflow: hidden;
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+/* Brilho passando pelo botão */
+
+.proximo-card .p2::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -100%;
+
+    width: 70%;
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.25),
+        transparent
+    );
+
+    transform: skewX(-20deg);
+
+    animation: brilho 3s infinite;
+}
+
+
+/* Seta */
+
+.proximo-card .p2::after {
+    content: "→";
+
+    margin-left: 10px;
+
+    font-size: 20px;
+
+    transition:
+        transform 0.25s ease;
+}
+
+
+/* Efeito ao passar o mouse */
+
+@media (hover: hover) {
+
+    .proximo-card .p2:hover {
+
+        transform: translateY(-3px);
+
+        box-shadow:
+            0 12px 30px rgba(255, 111, 145, 0.4);
+    }
+
+    .proximo-card .p2:hover::after {
+
+        transform: translateX(5px);
+    }
+}
+
+
+/* Efeito ao tocar */
+
+.proximo-card .p2:active {
+
+    transform: scale(0.94);
+
+    box-shadow:
+        0 5px 15px rgba(255, 111, 145, 0.25);
+}
+
+
+/* =========================
+   ANIMAÇÕES
+========================= */
+
+@keyframes aparecerBotao {
+
+    from {
+        opacity: 0;
+        transform:
+            translateY(25px)
+            scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+@keyframes brilho {
+
+    0% {
+        left: -100%;
+    }
+
+    40% {
+        left: 130%;
+    }
+
+    100% {
+        left: 130%;
+    }
+
+}

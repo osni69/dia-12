@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h2 class="titulo">Nossa História</h2>
+    </header>
+    <main>
+        <section class="amor">
+
+    <h2>Coisas que amo em você</h2>
+    <p class="subtitulo">Toque nos cartões para descobrir</p>
+
+    <div class="cartoes">
+
+        <div class="cartao" onclick="virarCartao(this)">
+            <div class="frente">
+                <h3>Toque aqui</h3>
+            </div>
+
+            <div class="verso">
+                <h3>Sua personalidade</h3>
+                <p>
+                    Para mim, você é a pessoa mais legal e divertida do mundo e nada nunca vai mudar isso, sua personaliade me cativa e o seu jeito me emociona, você é uma menina maravilhosa.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="cartao" onclick="virarCartao(this)">
+            <div class="frente">
+                <h3>Toque aqui</h3>
+            </div>
+
+            <div class="verso">
+                <h3>Seu jeito</h3>
+                <p>
+                    Eu amo o jeito que você gesticula e fala, amo o jeito que você olha para as coisas, eu amo o seu jeito de ser.
+                </p>
+            </div>
+        </div>
+
+
+        <div class="cartao" onclick="virarCartao(this)">
+            <div class="frente">
+                <h3>Toque aqui</h3>
+            </div>
+
+            <div class="verso">
+                <h3>Seu carinho</h3>
+                <p>
+                    Amo a forma como você demonstra carinho e torna os momentos simples especiais, sem contar seu cafuné que é perfeito.
+                </p>
+            </div>
+        </div>
+
+        <div class="cartao" onclick="virarCartao(this)">
+            <div class="frente">
+                <h3>Toque aqui</h3>
+            </div>
+
+            <div class="verso">
+                <h3>Seu corpo e sua beleza</h3>
+                <p>
+                    De tantas coisas boas sobre, sua beleza e se corpo que parece q foi escupido por Michelangelo acaba sendo a coisa menos interessante em você, e isso só mostra o quão especiual você é.
+                </p>
+            </div>
+        </div>
+
+        <div class="cartao" onclick="virarCartao(this)">
+            <div class="frente">
+                <h3>Toque aqui</h3>
+            </div>
+
+            <div class="verso">
+                <h3>Você</h3>
+                <p>
+                    Entre tantas coisas que eu poderia citar, no fim, a que mais amo é simplesmente você, você me salvou de lugares inimagináveis, você me ajudou em momentos que só alguém como você (impossível existir) poderia me ajudar, você é meu maior e único amor.
+                </p>
+            </div>
+        </div>
+            
+        <div class="card">
+            <a href="teste4.html" class="p">Próximooooooooooo</a>
+        </div>
+    </div>
+
+</section>
+    </main>
+</body>
+<script>
+function virarCartao(cartao) {
+
+    cartao.classList.toggle("virado");
+
+    if (cartao.classList.contains("virado")) {
+
+        const verso = cartao.querySelector(".verso");
+        const conteudo = verso.querySelector("p");
+
+        // Calcula somente o tamanho do texto
+        const alturaTexto = conteudo.scrollHeight;
+
+        // Espaço para título + texto + padding
+        const alturaFinal = alturaTexto + 100;
+
+        cartao.style.height = alturaFinal + "px";
+
+    } else {
+
+        cartao.style.height = "100px";
+    }
+}
+
+</script>
+</html>
