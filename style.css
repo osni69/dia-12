@@ -881,3 +881,208 @@ main{
     }
 
 }
+
+.carta-secao {
+    max-width: 950px;
+    margin: 0 auto;
+}
+
+/* =========================
+   CABEÇALHO DA CARTA
+========================= */
+
+.carta-cabecalho {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.carta-data {
+    display: inline-block;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #a66b78;
+    margin-bottom: 15px;
+}
+
+.carta-cabecalho h2 {
+    max-width: 750px;
+    margin: 0 auto 15px;
+
+    font-family: Georgia, serif;
+    font-size: 30px;
+    font-weight: normal;
+    line-height: 1.3;
+
+    color: #4d343a;
+}
+
+.carta-cabecalho p {
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+    color: #806d72;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.carta-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+/* =========================
+   CARTA
+========================= */
+
+.carta {
+    width: 100%;
+    max-width: 700px;
+
+    background: #fffdf8;
+    border-radius: 8px;
+    overflow: hidden;
+
+    box-shadow:
+        0 20px 50px rgba(80, 40, 50, 0.15),
+        0 5px 15px rgba(80, 40, 50, 0.08);
+
+    position: relative;
+}
+
+/* =========================
+   TOPO DA CARTA
+========================= */
+
+.carta-topo {
+    height: 100px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: linear-gradient(
+        135deg,
+        #e9bdc7,
+        #d99aa9
+    );
+
+    position: relative;
+}
+
+.carta-topo span {
+    font-family: Georgia, serif;
+    font-size: 32px;
+    font-style: italic;
+    color: white;
+}
+
+/* Corações */
+
+.carta-topo::before,
+.carta-topo::after {
+    content: "♡";
+
+    position: absolute;
+
+    font-size: 30px;
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.carta-topo::before {
+    left: 35px;
+}
+
+.carta-topo::after {
+    right: 35px;
+}
+
+/* =========================
+   CONTEÚDO DA CARTA
+========================= */
+
+.carta-conteudo {
+    padding: 50px 65px 60px;
+}
+
+.carta-conteudo p {
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 17px;
+    line-height: 1.9;
+
+    color: #514447;
+
+    margin-bottom: 22px;
+}
+
+/* Saudação */
+
+.carta-conteudo .saudacao {
+    font-family: "Brush Script MT", "Segoe Script", cursive;
+
+    font-size: 38px;
+
+    color: #a45f70;
+
+    margin-bottom: 25px;
+}
+
+/* Assinatura */
+
+.carta-conteudo .assinatura {
+    margin-top: 40px;
+
+    text-align: right;
+
+    font-family: "Brush Script MT", "Segoe Script", cursive;
+
+    font-size: 30px;
+
+    line-height: 1.5;
+
+    color: #a45f70;
+}
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+
+@media (max-width: 700px) {
+
+    main {
+        padding: 25px 15px 60px;
+    }
+
+    .carta-cabecalho h2 {
+        font-size: 24px;
+    }
+
+    .carta-conteudo {
+        padding: 35px 28px 45px;
+    }
+
+    .carta-conteudo p {
+        font-size: 16px;
+        line-height: 1.8;
+    }
+
+    .carta-topo {
+        height: 85px;
+    }
+
+    .carta-topo span {
+        font-size: 28px;
+    }
+
+    .carta-topo::before {
+        left: 20px;
+    }
+
+    .carta-topo::after {
+        right: 20px;
+    }
+}

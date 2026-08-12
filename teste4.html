@@ -321,9 +321,7 @@ function mostrarResultado() {
 
     document.getElementById("opcoes").innerHTML = "";
 
-
     let mensagem;
-
 
     if (pontos === 5) {
 
@@ -342,57 +340,8 @@ function mostrarResultado() {
 
     }
 
-
     document.getElementById("resultado").textContent =
         mensagem;
-}
-
-
-/* =========================
-   INICIAR
-========================= */
-
-carregarPergunta();
-function mostrarResultado() {
-
-    document.getElementById("perguntaNumero").textContent =
-        "Quiz concluído";
-
-    document.getElementById("numeroPergunta").textContent =
-        "✓";
-
-    document.getElementById("barraProgresso").style.width =
-        "100%";
-
-    document.getElementById("pergunta").textContent =
-        `${pontos} de ${perguntas.length}`;
-
-    document.getElementById("opcoes").innerHTML = "";
-
-    let mensagem;
-
-    if (pontos === 5) {
-
-        mensagem =
-            "Você acertou tudo. Parece que nossa história está bem guardada na sua memória.";
-
-    } else if (pontos >= 3) {
-
-        mensagem =
-            "Você conhece muito bem a nossa história.";
-
-    } else {
-
-        mensagem =
-            "Acho que precisamos criar mais memórias juntos.";
-
-    }
-
-    document.getElementById("resultado").textContent =
-        mensagem;
-
-
-    /* MOSTRA O BOTÃO PRÓXIMO */
 
     const proximo =
         document.getElementById("proximoCard");
